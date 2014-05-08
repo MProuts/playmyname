@@ -24,7 +24,7 @@ $(document).ready(function(){
     Vex.Flow.Renderer.Backends.CANVAS);
 
   var ctx = renderer.getContext();
-  var stave = new Vex.Flow.Stave(10, 0, 500);
+  var stave = new Vex.Flow.Stave(10, 0, 720);
   stave.addClef("treble").setContext(ctx).draw();
 
   // Create a voice in 4/4
