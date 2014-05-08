@@ -1,69 +1,101 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Play My Name</title>
-  <script src="js/raphael-min.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src='http://www.vexflow.com/support/vexflow-min.js'></script>
-  <script src='js/Audiolet.min.js'></script>
-  <script src='js/play-my-name.js'></script>
+<meta charset="utf-8">
+<title>Play My Name</title>
+<script src="js/raphael-min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src='http://www.vexflow.com/support/vexflow-min.js'></script>
+<script src='js/Audiolet.min.js'></script>
+<script src='js/play-my-name.js'></script>
+<link rel="stylesheet" href="css/play-my-name.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Play My Name Play My Name</h1>
-<h2>When No One Is Around You</h2>
-  <p>AUDIOLET IS KINDA CROSS-BROWSER FRIENDLY. IT WORKS ON FIREFOX >=4.0 AND CANARY BUILDS OF CHROME WITH THE WEB AUDIO API ENABLED IN ABOUT:FLAGS.</p>
-  <form action="" method="get" id="search">
-    <input type="text" name="q">
-    <input type="submit">
-  </form>
 
-  <canvas width=700 height=100></canvas>
-  <section id="play">
-    <button type="button" onclick="playExample(window.location.search.slice(3))">&#9654; Play Example</button>
-  </section>
-  <br>
-  <table class="wikitable" border="1">
-    <tr>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-      <th>E</th>
-      <th>F</th>
-      <th>G</th>
-    </tr>
-    <tr>
-      <td>H</td>
-      <td>I</td>
-      <td>J</td>
-      <td>K</td>
-      <td>L</td>
-      <td>M</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <td>O</td>
-      <td>P</td>
-      <td>Q</td>
-      <td>R</td>
-      <td>S</td>
-      <td>T</td>
-      <td>U</td>
-    </tr>
-    <tr>
-      <td>V</td>
-      <td>W</td>
-      <td>X</td>
-      <td>Y</td>
-      <td>Z</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-  <p>wikipedia.org</p>
-  <p>engraving: <a href="http://www.vexflow.com">VexFlow</a></p>
-  <p>playback: <a href="http://oampo.github.io/Audiolet/">Audiolet</a></p>
-  </body>
-  </html>
+
+<div class="container">
+
+  <!-- ALERT -->
+
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="bs-example">
+        <div class="alert alert-warning fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <p><strong>Required!</strong> Firefox >= 4.0 or Chrome with Web Audio API enabled.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <form role="form" action="" method="get" id="search">
+          <input type="text" class="form-control input-lg" name="q" placeholder="What's your name?">
+        </form>
+      </div>
+      <div class="col-xs-2">
+        <section id="play">
+          <button type="button" style="font-size:2em" class="btn btn-large btn-block btn-primary" onclick="playExample(window.location.search.slice(3))"><span class="glyphicon glyphicon-play-circle" ></span> play</button>
+        </section>
+      </div>
+    </div>
+
+    <!-- STAFF -->
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <canvas width=700 height=100></canvas>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <fieldset>
+          <legend>About</legend>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 col-xs-offset-7">
+        <table class="table">
+          <tr>
+            <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th>
+          </tr>
+          <tr>
+            <td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td>
+          </tr>
+          <tr>
+            <td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td>
+          </tr>
+          <tr>
+            <td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td><td></td><td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- TECHNOLOGIES -->
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <fieldset>
+          <legend>Technologies</legend>
+        </fieldset>
+        <p>wikipedia.org</p>
+        <p>engraving: <a href="http://www.vexflow.com">VexFlow</a></p>
+        <p>playback: <a href="http://oampo.github.io/Audiolet/">Audiolet</a></p>
+      </div>
+    </div>
+    </div><!-- container -->
+    </body>
+    </html>
 
