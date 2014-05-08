@@ -42,9 +42,11 @@ $(document).ready(function(){
   // Render voice
   voice.draw(ctx, stave);
 
-});
 
-function playExample() {
+  playExample(name);
+}); //end document ready
+
+function playExample(name) {
   var Synth = function(audiolet, frequency) {
 
     AudioletGroup.apply(this, [audiolet, 0, 1]);
@@ -52,49 +54,49 @@ function playExample() {
     this.modulator = new Saw(this.audiolet, 2 * frequency);
     this.modulatorMulAdd = new MulAdd(this.audiolet, frequency / 2, frequency);
     this.gain = new Gain(this.audiolet);
-    this.envelope = new PercussiveEnvelope(this.audiolet, 1, 0.2, 0.5, 
+    this.envelope = new PercussiveEnvelope(this.audiolet, 1, 0.2, 0.5,
                                            function() {
-                                               this.audiolet.scheduler.addRelative(0,
-                                                                       this.remove.bind(this));
+                                             this.audiolet.scheduler.addRelative(0,
+                                                                                 this.remove.bind(this));
                                            }.bind(this)
                                           );
-    this.modulator.connect(this.modulatorMulAdd);
-    this.modulatorMulAdd.connect(this.sine);
-    this.envelope.connect(this.gain, 0, 1);
-    this.sine.connect(this.gain);
-    this.gain.connect(this.outputs[0]);
+                                          this.modulator.connect(this.modulatorMulAdd);
+                                          this.modulatorMulAdd.connect(this.sine);
+                                          this.envelope.connect(this.gain, 0, 1);
+                                          this.sine.connect(this.gain);
+                                          this.gain.connect(this.outputs[0]);
   };
   extend(Synth, AudioletGroup);
 
-  var scale = new MinorScale();
+  var scale = new MajorScale();
   var baseFrequency = 65; // The base frequency of the scale
-  var octave = 3; // The second octave
+  var octave = 2; // The second octave
   var freq1 = scale.getFrequency(0, baseFrequency, octave);
   var freq2 = scale.getFrequency(1, baseFrequency, octave);
   var freq3 = scale.getFrequency(2, baseFrequency, octave);
   var freq4 = scale.getFrequency(3, baseFrequency, octave);
 
-
   function frequencyFor(char) {
-    index = (char.charCodeAt(0) - 97) % 7;
-    return scale.getFrequency(index, 65, 2);
+    index = (char.charCodeAt(0) - 92) % 7;
+    return scale.getFrequency(index, 65, 1);
   }
 
-  var frequencies = []
+  var frequencies = [];
   for (i=0; i<name.length; i++){
-    //frequencies.push
+    frequencies.push(frequencyFor(name[i]));
   }
+
 
   var AudioletApp = function() {
     this.audiolet = new Audiolet();
-      var frequencyPattern = new PSequence([freq1, freq2, freq3, freq4]);
+    var frequencyPattern = new PSequence(frequencies);
 
-        this.audiolet.scheduler.play([frequencyPattern], 1,
-            function(frequency) {
-                var synth = new Synth(this.audiolet, frequency);
-                synth.connect(this.audiolet.output);
-            }.bind(this)
-        );
+    this.audiolet.scheduler.play([frequencyPattern], 1,
+                                 function(frequency) {
+                                   var synth = new Synth(this.audiolet, frequency);
+                                   synth.connect(this.audiolet.output);
+                                 }.bind(this)
+                                );
   };
 
   this.audioletApp = new AudioletApp();
