@@ -46,6 +46,9 @@ $(document).ready(function(){
 
 
   playExample(name);
+  $('#play button').click(function(){
+    $('#search').submit();
+  });
 }); //end document ready
 
 function playExample(name) {
