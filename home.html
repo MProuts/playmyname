@@ -48,7 +48,7 @@
       </div>
       <div class="col-xs-2">
         <section id="play">
-          <button type="button" style="font-size:2em" class="btn btn-large btn-block btn-primary" onclick="playExample(window.location.search.slice(3).toLowerCase())"><span class="glyphicon glyphicon-play-circle" ></span></button>
+          <button type="button" style="font-size:2em" class="btn btn-large btn-block btn-primary" onclick="playExample(window.location.search.slice(3).toLowerCase().replace(/\+/g, ''))"><span class="glyphicon glyphicon-play-circle" ></span></button>
         </section>
       </div>
     </div>

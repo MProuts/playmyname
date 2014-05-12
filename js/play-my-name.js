@@ -1,10 +1,11 @@
 $(document).ready(function(){
   //for engraving
   var pitches = ["a/4", "b/4", "c/4", "d/4", "e/4", "f/4", "g/4"]
-  var upperName = window.location.search.slice(3);
+  var originalName = window.location.search.slice(3).replace(/\+/g, ' ');
+  var upperName = window.location.search.slice(3).replace(/\+/g, '');
   var name = upperName.toLowerCase();
 
-  $('#search input[type=text]').val(upperName);
+  $('#search input[type=text]').val(originalName);
 
   function pitchFor(char) {
     index = (char.charCodeAt(0) - 97) % 7;
